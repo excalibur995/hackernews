@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { procedure, router } from "../trpc";
+import { storiesRouter } from "./stories";
 
 export const appRouter = router({
   hello: procedure
@@ -10,9 +11,10 @@ export const appRouter = router({
     )
     .query(({ input }) => {
       return {
-        greeting: `${input.text}`,
+        greeting: `Hello, ${input.text}`,
       };
     }),
+  stories: storiesRouter,
 });
 
 // export type definition of API

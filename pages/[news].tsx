@@ -1,17 +1,36 @@
-import { GetServerSidePropsContext } from "next";
 import React from "react";
+import { trpc } from "utils/trpc";
+import { GetServerSidePropsContext } from "next";
+import { ROUTES_NAME } from "utils/const";
+import { useStories } from "domain/news/hooks/news.hooks";
+import { ListCard } from "components/ListCard";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  console.log(context.query.news);
+  const stories = context.query.news as keyof typeof ROUTES_NAME;
+  const isInRoutes = !!ROUTES_NAME[stories];
+  if (isInRoutes) {
+    return {
+      props: {
+        stories,
+      },
+    };
+  }
   return {
-    props: {},
+    redirect: {
+      destination: "/",
+    },
   };
 };
 
-const NewsDynamicPages = () => {
-  return <div>NewsPages</div>;
+const NewsDynamicPages = (props: { stories: keyof typeof ROUTES_NAME }) => {
+  const stories = trpc.stories.fetchStories.useQuery(props.stories, {
+    initialData: [],
+    queryKey: ["stories.fetchStories", props.stories],
+  });
+  const data = useStories(stories.data?.slice(0, 30), stories.isFetched);
+  return <ListCard data={data} />;
 };
 
 export default NewsDynamicPages;

@@ -2,9 +2,13 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { styled } from "stitches.config";
+import { AVAILABLE_ROUTES, ROUTES_NAME } from "utils/const";
 
 const HeaderWrapper = styled("header", {
   background: "Tomato",
+  padding: "$8",
+  position: "sticky",
+  top: 0,
 });
 
 const Navigation = styled("nav", {
@@ -59,12 +63,11 @@ export const Header = () => {
             <Title>Hacker News</Title>
           </Link>
           <ASection>
-            <Link href="/newstories">New</Link>
-            <Link href="/topstories">Top</Link>
-            <Link href="/beststories">Best</Link>
-            <Link href="/askstories">Ask</Link>
-            <Link href="/showstories">Show</Link>
-            <Link href="/jobstories">Job</Link>
+            {AVAILABLE_ROUTES.map((routes) => (
+              <Link href={`/${routes}`} key={routes}>
+                {ROUTES_NAME[routes]}
+              </Link>
+            ))}
           </ASection>
         </NaviSection>
       </Navigation>
