@@ -63,7 +63,7 @@ export const Header = () => {
             <Title>Hacker News</Title>
           </Link>
           <ASection>
-            {AVAILABLE_ROUTES.map((routes) => (
+            {AVAILABLE_ROUTES.slice(1).map((routes) => (
               <Link href={`/${routes}`} key={routes}>
                 {ROUTES_NAME[routes]}
               </Link>
