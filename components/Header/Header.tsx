@@ -10,6 +10,7 @@ const HeaderWrapper = styled("header", {
   padding: "$8",
   position: "fixed",
   width: "100%",
+  maxWidth: "inherit",
   top: 0,
   transition: "all 500ms",
   variants: {
