@@ -3,12 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { styled } from "stitches.config";
 import { AVAILABLE_ROUTES, ROUTES_NAME } from "utils/const";
+import { useScroll } from "shared/hooks/useScroll";
 
 const HeaderWrapper = styled("header", {
   background: "Tomato",
   padding: "$8",
-  position: "sticky",
+  position: "fixed",
+  width: "100%",
   top: 0,
+  transition: "all 500ms",
+  variants: {
+    isScrolledUp: {
+      true: {
+        top: "-6rem",
+      },
+    },
+  },
 });
 
 const Navigation = styled("nav", {
@@ -47,8 +57,9 @@ const Title = styled("h1", {
 });
 
 export const Header = () => {
+  const { scrollDirection, ...rest } = useScroll();
   return (
-    <HeaderWrapper>
+    <HeaderWrapper isScrolledUp={scrollDirection === "up" && rest.scrollY > 8}>
       <Navigation>
         <Link href="/">
           <Image
