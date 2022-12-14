@@ -1,6 +1,6 @@
+import React from "react";
 import { NewsCard } from "components/NewsCard";
 import { GenericNews } from "domain/news/entities/news.entities";
-import React from "react";
 import { styled } from "stitches.config";
 export interface ListCard {
   data: {

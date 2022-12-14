@@ -34,7 +34,7 @@ const Avatar = styled("div", {
 });
 
 export const CommentCard = (props: GenericNews) => {
-  return (
+  return !props.deleted && !props.dead ? (
     <ListCard>
       <UserSection>
         <Avatar>
@@ -47,5 +47,5 @@ export const CommentCard = (props: GenericNews) => {
       </UserSection>
       <span dangerouslySetInnerHTML={{ __html: props?.text ?? "" }} />
     </ListCard>
-  );
+  ) : null;
 };

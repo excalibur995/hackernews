@@ -13,4 +13,6 @@ export interface GenericNews {
   url?: string;
   text?: string;
   parent?: string;
+  deleted?: boolean;
+  dead?: boolean;
 }

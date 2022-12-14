@@ -13,6 +13,7 @@ const HeaderWrapper = styled("header", {
   width: "100%",
   maxWidth: "inherit",
   top: 0,
+  zIndex: 999,
   transition: "all 500ms",
   variants: {
     isScrolledUp: {

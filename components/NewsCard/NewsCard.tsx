@@ -1,8 +1,10 @@
-import { GenericNews } from "domain/news/entities/news.entities";
 import Link from "next/link";
 import React from "react";
+
+import { GenericNews } from "domain/news/entities/news.entities";
 import { styled } from "stitches.config";
 import { getDomain, getRelativeTo } from "utils/utils";
+import { useRouter } from "next/router";
 
 const CardWrapper = styled("div", {
   borderBottom: "thin solid #efefefef",
@@ -60,8 +62,9 @@ const User = styled("a", {
 });
 
 export const NewsCard = (props: GenericNews) => {
+  const { push } = useRouter();
   const onClickNewsWithoutUrl = () => {
-    !props.url && console.log("no url");
+    !props.url && push(`/detail/${props.id}`);
   };
 
   return (

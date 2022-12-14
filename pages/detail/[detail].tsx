@@ -1,10 +1,12 @@
 import React from "react";
+import CommentSectionComponent from "modules/CommentSectionComponent";
+import VirtualizedList from "modules/VirtualizedList";
+
 import { GetServerSidePropsContext } from "next/types";
 import { styled } from "stitches.config";
 import { trpc } from "utils/trpc";
 import { useStories } from "domain/news/hooks/news.hooks";
 import { NewsCard } from "components/NewsCard";
-import CommentSectionComponent from "modules/CommentSectionComponent";
 
 const Wrapper = styled("div", {
   marginTop: 64,
@@ -58,12 +60,13 @@ const DetailPage = ({ itemId }: { itemId: number }) => {
         <AddCommentButton type="submit">Add Comment</AddCommentButton>
       </InputArea>
       <CommentSection>
-        {data.map((item, idx) => (
-          <CommentSectionComponent
-            key={String(item.data?.id) + idx}
-            {...item.data}
-          />
-        ))}
+        <VirtualizedList
+          data={data}
+          estimateSize={100}
+          render={(idx) => (
+            <CommentSectionComponent key={idx} {...data[idx].data} />
+          )}
+        />
       </CommentSection>
     </Wrapper>
   );

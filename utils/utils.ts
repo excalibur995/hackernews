@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+
 export function getDomain(url: string) {
   const domain = new URL(url);
   return domain.hostname;
