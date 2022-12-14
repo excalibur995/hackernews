@@ -6,6 +6,7 @@ import { trpc } from "utils/trpc";
 import { Header } from "components/Header";
 
 import "../styles/globals.css";
+import "react-placeholder/lib/reactPlaceholder.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (

@@ -4,6 +4,7 @@ import { GenericNews } from "domain/news/entities/news.entities";
 import { useStories } from "domain/news/hooks/news.hooks";
 import { styled } from "stitches.config";
 import { useInView } from "react-intersection-observer";
+import ReactPlaceholder from "react-placeholder/lib";
 
 const KidsStyled = styled("div", {
   paddingLeft: "$16",
@@ -20,7 +21,14 @@ const CommentSectionComponent = (props: GenericNews) => {
           data={data}
           estimateSize={100}
           render={(idx) => (
-            <CommentSectionComponent key={idx} {...data[idx].data} />
+            <ReactPlaceholder
+              type="media"
+              rows={2}
+              key={idx}
+              ready={!data[idx].isLoading}
+            >
+              <CommentSectionComponent key={idx} {...data[idx].data} />
+            </ReactPlaceholder>
           )}
         />
       </KidsStyled>

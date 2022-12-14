@@ -14,3 +14,14 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.media-block {
+  margin: 12px 0;
+  padding: 8px;
+}
+
+.media-block .round-shape {
+  width: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+}

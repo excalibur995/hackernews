@@ -1,6 +1,7 @@
 import React from "react";
 import CommentSectionComponent from "modules/CommentSectionComponent";
 import VirtualizedList from "modules/VirtualizedList";
+import ReactPlaceholder from "react-placeholder";
 
 import { GetServerSidePropsContext } from "next/types";
 import { styled } from "stitches.config";
@@ -64,7 +65,14 @@ const DetailPage = ({ itemId }: { itemId: number }) => {
           data={data}
           estimateSize={100}
           render={(idx) => (
-            <CommentSectionComponent key={idx} {...data[idx].data} />
+            <ReactPlaceholder
+              type="media"
+              rows={2}
+              key={idx}
+              ready={!data[idx].isLoading}
+            >
+              <CommentSectionComponent {...data[idx].data} />
+            </ReactPlaceholder>
           )}
         />
       </CommentSection>

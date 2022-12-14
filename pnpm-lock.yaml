@@ -22,6 +22,7 @@ specifiers:
   react-dom: 18.2.0
   react-icons: ^4.7.1
   react-intersection-observer: ^9.4.1
+  react-placeholder: ^4.1.0
   typescript: 4.9.4
   zod: ^3.19.1
   zustand: ^4.1.5
@@ -47,6 +48,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
   react-intersection-observer: 9.4.1_react@18.2.0
+  react-placeholder: 4.1.0_react@18.2.0
   typescript: 4.9.4
   zod: 3.19.1
   zustand: 4.1.5_react@18.2.0
@@ -1888,6 +1890,14 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
+  /react-placeholder/4.1.0_react@18.2.0:
+    resolution: {integrity: sha512-z1HGD86NWJTYTQumHsmGH9jkozv4QHa9dju/vHVUd4f1svu23pf5v7QoBLBfs3kA1S9GLJaCeRMHLbO2SCdz5A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-ssr-prepass/1.5.0_react@18.2.0:
