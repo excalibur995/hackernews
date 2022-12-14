@@ -9,6 +9,7 @@ const ListCard = styled("li", {
   borderTop: "thin solid #efefefef",
   padding: "$12",
   fontSize: 12,
+  minHeight: 55,
 });
 
 const UserSection = styled("section", {

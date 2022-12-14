@@ -50,7 +50,9 @@ export const getServerSideProps = async (
 };
 
 const DetailPage = ({ itemId }: { itemId: number }) => {
-  const detail = trpc.stories.fetchDetail.useQuery(itemId);
+  const detail = trpc.stories.fetchDetail.useQuery(itemId, {
+    enabled: typeof itemId === "number",
+  });
   const data = useStories(detail.data?.kids, detail.isFetched);
 
   return (

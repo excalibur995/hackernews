@@ -7,7 +7,7 @@ export const useStories = (stories: number[] = [], enabled?: boolean) =>
       return {
         queryKey: ["user", story],
         queryFn: async () => await fetchStoriesDetail(story),
-        enabled: !!story && enabled && !!stories,
+        enabled: typeof story === "number" && enabled && !!stories,
       };
     }),
   });

@@ -24,9 +24,7 @@ const VirtualizedList = (props: VirtualizedListProps) => {
 
   return (
     <div ref={parentRef}>
-      <VirtualizedListContentWrapper
-        css={{ height: virtualizer.getTotalSize() }}
-      >
+      <VirtualizedListContentWrapper>
         {virtualizer.getVirtualItems().map((virtualRow) => (
           <div
             key={virtualRow.key}

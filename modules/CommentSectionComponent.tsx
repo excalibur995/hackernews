@@ -6,12 +6,12 @@ import { styled } from "stitches.config";
 import { useInView } from "react-intersection-observer";
 import ReactPlaceholder from "react-placeholder/lib";
 
-const KidsStyled = styled("div", {
+const KidsStyled = styled("ul", {
   paddingLeft: "$16",
 });
 
 const CommentSectionComponent = (props: GenericNews) => {
-  const [ref, inView] = useInView({ triggerOnce: true });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.9 });
   const data = useStories(props?.kids, inView);
   return (
     <>
@@ -19,7 +19,7 @@ const CommentSectionComponent = (props: GenericNews) => {
       <KidsStyled ref={ref}>
         <VirtualizedList
           data={data}
-          estimateSize={100}
+          estimateSize={1000}
           render={(idx) => (
             <ReactPlaceholder
               type="media"
