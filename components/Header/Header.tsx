@@ -4,6 +4,7 @@ import Link from "next/link";
 import { styled } from "stitches.config";
 import { AVAILABLE_ROUTES, ROUTES_NAME } from "utils/const";
 import { useScroll } from "shared/hooks/useScroll";
+import { useRouter } from "next/router";
 
 const HeaderWrapper = styled("header", {
   background: "Tomato",
@@ -57,8 +58,20 @@ const Title = styled("h1", {
   margin: 0,
 });
 
+const RoutesName = styled("span", {
+  variants: {
+    active: {
+      true: {
+        color: "WhiteSmoke",
+        fontWeight: "800",
+      },
+    },
+  },
+});
+
 export const Header = () => {
   const { scrollDirection, ...rest } = useScroll();
+  const { asPath } = useRouter();
   return (
     <HeaderWrapper isScrolledUp={scrollDirection === "up" && rest.scrollY > 8}>
       <Navigation>
@@ -77,7 +90,9 @@ export const Header = () => {
           <ASection>
             {AVAILABLE_ROUTES.slice(1).map((routes) => (
               <Link href={`/${routes}`} key={routes}>
-                {ROUTES_NAME[routes]}
+                <RoutesName active={asPath.slice(1) === routes}>
+                  {ROUTES_NAME[routes]}
+                </RoutesName>
               </Link>
             ))}
           </ASection>

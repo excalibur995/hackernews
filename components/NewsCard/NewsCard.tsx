@@ -1,4 +1,5 @@
 import { GenericNews } from "domain/news/entities/news.entities";
+import Link from "next/link";
 import React from "react";
 import { styled } from "stitches.config";
 import { getDomain, getRelativeTo } from "utils/utils";
@@ -46,7 +47,7 @@ const NewsDetailContainer = styled("div", {
   gap: "$4",
 });
 
-const Comments = styled("a", {
+const Comments = styled(Link, {
   "&:after": {
     content: " Comments",
   },
@@ -62,6 +63,7 @@ export const NewsCard = (props: GenericNews) => {
   const onClickNewsWithoutUrl = () => {
     !props.url && console.log("no url");
   };
+
   return (
     <CardWrapper isNotUsingScore={!props.score}>
       {props.score && (
@@ -77,7 +79,11 @@ export const NewsCard = (props: GenericNews) => {
         </a>
         {props.url && <a href={props.url}>{getDomain(props.url)}</a>}
         <section>
-          {props.kids && <Comments>{props.kids.length}</Comments>}
+          {props.kids && (
+            <Comments href={`/detail/${props.id}`}>
+              {props.kids.length}
+            </Comments>
+          )}
           {props.by && <User>{props.by}</User>}
           {props.time && <span>{getRelativeTo(props.time)}</span>}
         </section>
