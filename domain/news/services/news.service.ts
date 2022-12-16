@@ -1,5 +1,10 @@
 import { request } from "drivers/http-request";
-import { ENDPOINT, ENDPOINT_DETAIL, ROUTES_NAME } from "utils/const";
+import {
+  ENDPOINT,
+  ENDPOINT_DETAIL,
+  USER_DETAIL,
+  ROUTES_NAME,
+} from "utils/const";
 import { GenericNews } from "../entities/news.entities";
 
 export async function fetchStories(

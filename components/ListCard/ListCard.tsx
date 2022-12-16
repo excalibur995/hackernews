@@ -3,7 +3,7 @@ import ReactPlaceholder from "react-placeholder/lib";
 import VirtualizedList from "modules/VirtualizedList";
 import { NewsCard } from "components/NewsCard";
 import { GenericNews } from "domain/news/entities/news.entities";
-import { styled } from "stitches.config";
+import { CommentCard } from "components/CommentCard";
 
 export interface ListCard {
   data: {
@@ -13,35 +13,29 @@ export interface ListCard {
   }[];
 }
 
-const ListWrapper = styled("div", {
-  "> div": {
-    "&:first-child": {
-      marginTop: 64,
-      "@bp1": {
-        marginTop: 38,
-      },
-    },
-  },
-});
 export const ListCard = ({ data }: ListCard) => {
   return (
-    <ListWrapper>
+    <>
       <VirtualizedList
         data={data}
         estimateSize={100}
         render={(idx) =>
-          data[idx].data?.type !== "comment" ? (
+          !data[idx].data?.dead && !data[idx].data?.deleted ? (
             <ReactPlaceholder
               type="media"
               rows={2}
               key={idx}
               ready={!data[idx].isLoading}
             >
-              <NewsCard {...data[idx].data} />
+              {data[idx].data?.type !== "comment" ? (
+                <NewsCard {...data[idx].data} />
+              ) : (
+                <CommentCard {...data[idx].data} />
+              )}
             </ReactPlaceholder>
           ) : null
         }
       />
-    </ListWrapper>
+    </>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { GenericNews } from "domain/news/entities/news.entities";
 import { styled } from "stitches.config";
 import { getRelativeTo } from "utils/utils";
+import Link from "next/link";
 
 const ListCard = styled("li", {
   flexing: "column",
@@ -12,7 +13,7 @@ const ListCard = styled("li", {
   minHeight: 55,
 });
 
-const UserSection = styled("section", {
+const UserSection = styled(Link, {
   flexing: "row",
   alignItems: "center",
   gap: "$8",
@@ -37,7 +38,7 @@ const Avatar = styled("div", {
 export const CommentCard = (props: GenericNews) => {
   return !props.deleted && !props.dead ? (
     <ListCard>
-      <UserSection>
+      <UserSection href={`/user/${props.by}`}>
         <Avatar>
           <span>{props.by?.charAt(0)}</span>
         </Avatar>

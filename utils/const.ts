@@ -18,3 +18,4 @@ export const ROUTES_NAME = {
 
 export const ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT!;
 export const ENDPOINT_DETAIL = process.env.NEXT_PUBLIC_DETAIL_API_ENDPOINT!;
+export const USER_DETAIL = process.env.NEXT_PUBLIC_USER_API_ENDPOINT!;

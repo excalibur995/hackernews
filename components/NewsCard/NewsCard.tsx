@@ -7,8 +7,8 @@ import { getDomain, getRelativeTo } from "utils/utils";
 import { useRouter } from "next/router";
 
 const CardWrapper = styled("div", {
-  borderBottom: "thin solid #efefefef",
   padding: "$8",
+  borderBottom: "thin solid #efefefef",
   gap: "$8",
   display: "grid",
   gridTemplateColumns: "50px 2fr",
@@ -55,7 +55,7 @@ const Comments = styled(Link, {
   },
 });
 
-const User = styled("a", {
+const User = styled(Link, {
   "&:before": {
     content: "by ",
   },
@@ -87,7 +87,7 @@ export const NewsCard = (props: GenericNews) => {
               {props.kids.length}
             </Comments>
           )}
-          {props.by && <User>{props.by}</User>}
+          {props.by && <User href={`/user/${props.by}`}>{props.by}</User>}
           {props.time && <span>{getRelativeTo(props.time)}</span>}
         </section>
       </NewsDetailContainer>

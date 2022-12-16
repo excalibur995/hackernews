@@ -1,10 +1,10 @@
+import ReactPlaceholder from "react-placeholder/lib";
 import VirtualizedList from "./VirtualizedList";
 import { CommentCard } from "components/CommentCard";
 import { GenericNews } from "domain/news/entities/news.entities";
 import { useStories } from "domain/news/hooks/news.hooks";
 import { styled } from "stitches.config";
 import { useInView } from "react-intersection-observer";
-import ReactPlaceholder from "react-placeholder/lib";
 
 const KidsStyled = styled("ul", {
   paddingLeft: "$16",
